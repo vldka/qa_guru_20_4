@@ -29,6 +29,7 @@ public class JUnit5Test {
         open("/selenide/selenide");
         $("#wiki-tab").click();
         $(byText("Soft assertions")).click();
+        //Проверка
         $("#wiki-body").shouldHave(text("""
         @ExtendWith({SoftAssertsExtension.class})
         class Tests {
