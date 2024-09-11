@@ -19,8 +19,8 @@ public class JUnit5Test {
     }
 
     @AfterAll
-    static void closeWindow() {
-        WebDriverRunner.closeWindow();
+    static void closeWebDriver() {
+        WebDriverRunner.closeWebDriver();
     }
 
     @Test
