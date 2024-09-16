@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selectors.byTagAndText;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -31,17 +32,25 @@ public class JUnit5Test {
         $(byText("Soft assertions")).click();
         //Проверка
         $("#wiki-body").shouldHave(text("""
-        @ExtendWith({SoftAssertsExtension.class})
-        class Tests {
-            @Test
-            void test() {
-                Configuration.assertionMode = SOFT;
-                open("page.html");
+                @ExtendWith({SoftAssertsExtension.class})
+                class Tests {
+                    @Test
+                    void test() {
+                        Configuration.assertionMode = SOFT;
+                        open("page.html");
 
-                $("#first").should(visible).click();
-                $("#second").should(visible).click();
-            }
-        }"""));
+                        $("#first").should(visible).click();
+                        $("#second").should(visible).click();
+                    }
+                }"""));
+    }
+
+    @Test
+    void getEnterpriseTestForm() {
+        open("/");
+        $(byText("Solutions")).hover();
+        $(byText("Enterprise")).click();
+        $("h1#hero-section-brand-heading").shouldHave(text("The AI-powered\ndeveloper platform."));
     }
 
 }
