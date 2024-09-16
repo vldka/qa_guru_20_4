@@ -1,5 +1,6 @@
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
+import com.codeborne.selenide.selector.ByText;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -46,8 +47,8 @@ public class JUnit5Test {
     @Test
     void getEnterpriseTestForm() {
         open("/");
-        $(byText("Solutions")).hover();
-        $(byText("Enterprise")).click();
+        $$("[type='button']").find(text("Solutions")).hover();
+        $$("[href='https://github.com/enterprise']").find(text("Enterprise")).click();
         $("h1#hero-section-brand-heading").shouldHave(text("The AI-powered\ndeveloper platform."));
     }
 
